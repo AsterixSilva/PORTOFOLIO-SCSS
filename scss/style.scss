@@ -1,0 +1,685 @@
+// =========================
+// VARIABLES
+// =========================
+$bg: #0f172a;
+$bg-dark: #111827;
+$border: #334155;
+$border-light: #475569;
+$text: #e2e8f0;
+$text-muted: #94a3b8;
+$text-soft: #64748b;
+$heading: #ffffff;
+$cyan: #22d3ee;
+$cyan-light: #67e8f9;
+$green: #4ade80;
+
+$radius-sm: 5px;
+$radius-md: 10px;
+$radius-lg: 12px;
+$radius-xl: 20px;
+
+@mixin card($background: $bg, $radius: $radius-lg) {
+  background-color: $background;
+  border: 1px solid $border;
+  border-radius: $radius;
+}
+
+@mixin mono($size: 13px, $color: $text-soft) {
+  color: $color;
+  font-family: monospace;
+  font-size: $size;
+}
+
+// =========================
+// RESET & BASE
+// =========================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: $bg;
+  color: $text;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+// =========================
+// NAVBAR
+// =========================
+.site-header {
+  position: sticky;
+  top: 0;
+  background-color: $bg;
+  border-bottom: 1px solid $border;
+  z-index: 10;
+}
+
+.navbar {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: $cyan;
+  font-size: 22px;
+  font-weight: bold;
+
+  span {
+    color: white;
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+
+  a {
+    color: $text-muted;
+
+    &:hover {
+      color: $cyan;
+    }
+  }
+}
+
+.status {
+  color: $text-muted;
+  font-size: 12px;
+
+  .status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: $green;
+  }
+}
+
+// =========================
+// HERO
+// =========================
+.hero {
+  padding: 80px 0;
+
+  &-container {
+    min-height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+  }
+
+  &-greeting {
+    color: $text-muted;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    color: $heading;
+    font-size: 48px;
+    line-height: 1.2;
+
+    span {
+      display: block;
+      color: $cyan;
+    }
+  }
+
+  h2 {
+    margin-top: 18px;
+    font-size: 22px;
+    color: #cbd5e1;
+
+    span {
+      color: $cyan;
+    }
+  }
+
+  &-description {
+    max-width: 600px;
+    margin-top: 15px;
+    color: $text-muted;
+  }
+
+  &-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+  }
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+
+  &-primary {
+    background-color: $cyan;
+    color: $bg;
+
+    &:hover {
+      background-color: $cyan-light;
+    }
+  }
+
+  &-outline {
+    border: 1px solid $border-light;
+
+    &:hover {
+      border-color: $cyan;
+      color: $cyan;
+    }
+  }
+}
+
+.university-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+
+  img {
+    width: 55px;
+    height: 55px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 8px;
+    object-fit: contain;
+  }
+
+  p {
+    color: $text-soft;
+    font-size: 12px;
+  }
+
+  strong {
+    color: #cbd5e1;
+  }
+}
+
+.profile-area {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-frame {
+  position: relative;
+}
+
+.profile-border {
+  position: absolute;
+  border: 1px solid $border;
+  border-radius: $radius-xl;
+
+  &-one {
+    top: -8px;
+    right: -8px;
+    bottom: -8px;
+    left: -8px;
+  }
+
+  &-two {
+    top: -16px;
+    right: -16px;
+    bottom: -16px;
+    left: -16px;
+  }
+}
+
+.profile-image-box {
+  width: 280px;
+  height: 370px;
+  overflow: hidden;
+  border: 1px solid $border-light;
+  border-radius: $radius-xl;
+  background-color: $bg-dark;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.student-card {
+  position: absolute;
+  left: -25px;
+  bottom: -15px;
+  padding: 12px 15px;
+  @include card($bg-dark, 8px);
+
+  small {
+    color: $text-soft;
+  }
+
+  p {
+    @include mono(13px, $cyan);
+  }
+}
+
+// =========================
+// SECTION
+// =========================
+.section {
+  padding: 90px 0;
+
+  &-dark {
+    background-color: $bg-dark;
+    border-top: 1px solid #1e293b;
+  }
+}
+
+.section-heading {
+  margin-bottom: 40px;
+
+  p {
+    @include mono(13px, $cyan);
+  }
+
+  h2 {
+    color: $heading;
+    font-size: 34px;
+    margin: 5px 0;
+  }
+
+  span {
+    color: $text-muted;
+  }
+}
+
+// =========================
+// ABOUT
+// =========================
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.card {
+  padding: 25px;
+  @include card();
+
+  &:hover {
+    border-color: $cyan;
+  }
+
+  &-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    color: $heading;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: $text-muted;
+  }
+}
+
+// =========================
+// EDUCATION
+// =========================
+.timeline {
+  border-left: 2px solid $border;
+  padding-left: 30px;
+
+  &-item {
+    position: relative;
+    margin-bottom: 35px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    > p:not(.timeline-year) {
+      color: $text-muted;
+      margin-top: 4px;
+    }
+  }
+
+  &-dot {
+    position: absolute;
+    left: -39px;
+    top: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: $cyan;
+    border: 3px solid $bg;
+    border-radius: 50%;
+  }
+
+  &-year {
+    color: $cyan !important;
+    font-family: monospace;
+    font-size: 13px;
+  }
+
+  h3 {
+    color: $heading;
+    margin-top: 5px;
+  }
+
+  &-description {
+    max-width: 700px;
+    margin-top: 12px !important;
+  }
+}
+
+// =========================
+// SKILLS
+// =========================
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.skill-card {
+  padding: 22px;
+  @include card($bg, $radius-md);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+
+  h3 {
+    color: $heading;
+  }
+
+  span {
+    @include mono(12px, $cyan);
+  }
+}
+
+.progress {
+  height: 7px;
+  margin-top: 15px;
+  background-color: $border;
+  border-radius: 10px;
+
+  &-bar {
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  &-html {
+    width: 45%;
+    background-color: #f97316;
+  }
+
+  &-css {
+    width: 35%;
+    background-color: #3b82f6;
+  }
+
+  &-n8n {
+    width: 20%;
+    background-color: #ec4899;
+  }
+}
+
+.skill-learning {
+  border-style: dashed;
+}
+
+.code-label {
+  @include mono(13px, $text-soft);
+}
+
+.learning-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 15px;
+
+  span {
+    padding: 5px 9px;
+    background-color: #1e293b;
+    color: $text-muted;
+    border-radius: $radius-sm;
+    font-size: 12px;
+  }
+}
+
+// =========================
+// PROJECTS
+// =========================
+.project-card {
+  padding: 25px;
+  @include card($bg-dark);
+}
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.project-number {
+  @include mono(13px, $cyan);
+}
+
+.project-card {
+  h3 {
+    color: $heading;
+    margin-top: 5px;
+    font-size: 24px;
+  }
+}
+
+.project-type {
+  color: $text-muted;
+  border: 1px solid $border-light;
+  padding: 4px 8px;
+  border-radius: $radius-sm;
+  font-size: 12px;
+}
+
+.project-description {
+  margin-top: 15px;
+  color: $text-muted;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+
+  span {
+    padding: 5px 9px;
+    background-color: #1e293b;
+    color: $text-muted;
+    border-radius: $radius-sm;
+    font-size: 12px;
+  }
+}
+
+.coming-soon {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px dashed $border;
+  text-align: center;
+
+  p {
+    @include mono(13px, $text-soft);
+  }
+
+  span {
+    color: $text-soft;
+    font-size: 14px;
+  }
+}
+
+// =========================
+// CONTACT
+// =========================
+.contact-section {
+  max-width: 900px;
+  margin: auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.contact-card {
+  padding: 20px;
+  @include card($bg, $radius-md);
+  text-align: center;
+
+  &:hover {
+    border-color: $cyan;
+  }
+
+  h3 {
+    color: $heading;
+    margin-top: 8px;
+  }
+
+  p {
+    color: $text-muted;
+    font-size: 12px;
+    word-break: break-word;
+  }
+}
+
+.contact-icon {
+  font-size: 25px;
+}
+
+// =========================
+// FOOTER
+// =========================
+footer {
+  border-top: 1px solid $border;
+}
+
+.footer {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    color: $text-soft;
+    font-size: 13px;
+  }
+
+  &-code {
+    font-family: monospace;
+  }
+}
+
+// =========================
+// RESPONSIVE
+// =========================
+@media (max-width: 850px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .university-info {
+    justify-content: center;
+  }
+
+  .about-grid,
+  .skills-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .profile-area {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero {
+    h1 {
+      font-size: 38px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .profile-image-box {
+    width: 230px;
+    height: 310px;
+  }
+
+  .student-card {
+    display: none;
+  }
+
+  .project-top {
+    flex-direction: column;
+  }
+
+  .tags,
+  .learning-tags {
+    flex-wrap: wrap;
+  }
+
+  .footer {
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    padding: 20px 0;
+  }
+}
